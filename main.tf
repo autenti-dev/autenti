@@ -110,9 +110,7 @@ resource "azurerm_virtual_machine" "autentidev" {
             key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhCjP3VMUh0odWdHeW7lzszlFMZVvDeiFI8l0FUa10iO3511VZ7L06XJV4E89WeojV4BjFGCUDS4WogqKzv7BPbDEkH5xSFRLRtToLFbEiw/DxD1x8R2jWeg/yMAWZiHafjnVbj9h7oD13nPDpXjWHoNrsteSnlcUFXjClRRBIj9vjGn/CXFzuz1DhP+USHmbeNdQqNP6SriXsjJypmnKLDLlx4nWKmtBYGfu5sJ/IwTUhKszrERWR5E8tEGnXtL8nYex3CovnhSG+0Z+7ZQnLdL1W7qEKcANOQXT9L9AAG0/I9mdPjRkNnO1wmspSeUReNVKSEvOOkrDQT3OV2VWMw== rsa-key-20180209"
         } 
  }
-
   tags {
     environment = "staging"
   }
 }
-
