@@ -1,0 +1,27 @@
+version: '3'
+ 
+services:
+    nginx_imga:
+        container_name: ${COMPOSE_PROJECT_NAME1}_nginx_con
+        build:
+            context: ./nginx
+        networks:
+            public_net:
+                ipv4_address: ${NGINX1_IP}
+
+    nginx_imgb:
+        container_name: ${COMPOSE_PROJECT_NAME2}_nginx_con
+        build:
+            context: ./nginx
+        networks:
+            public_net:
+                ipv4_address: ${NGINX2_IP}
+
+ 
+networks:
+    public_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: ${NETWORK_SUBNET}

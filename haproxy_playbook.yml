@@ -1,0 +1,33 @@
+- hosts: all
+#  user: krzysiekok
+#  sudo: yes
+
+  vars:
+    haproxy_app_name: myapp
+    haproxy_mode: http
+    haproxy_enable_stats: enable 
+    haproxy_algorithm: roundrobin
+    haproxy_backend_servers:
+      - {name: server1, ip: 192.168.0.50, port: 80, paramstring: cookie A check}
+      - {name: server2, ip: 192.168.0.60, port: 80, paramstring: cookie A check}
+    haproxy_stats_users:
+      - {username: autenti, password: autenti}
+  
+  tasks:
+    - name: Update apt cache 
+      apt: update_cache=yes cache_valid_time=3600      
+
+    - name: Install haproxy
+      apt: name=haproxy state=present
+
+    - name: Enable init script
+      replace: dest='/etc/default/haproxy' 
+            regexp='ENABLED=0'
+            replace='ENABLED=1'
+
+    - name: Update HAProxy config
+      template: src=templates/haproxy.cfg 
+            dest=/etc/haproxy/haproxy.cfg 
+            backup=yes
+            become=yes
+            become_user=krzysiekok

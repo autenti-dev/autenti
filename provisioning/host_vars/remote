@@ -1,0 +1,8 @@
+---
+
+ansible_python_interpreter: /usr/bin/python3
+ 
+remote_user: krzysiekok
+docker_group: docker
+ 
+docker_remote_app_dir: /tmp/helloworld
